@@ -1,0 +1,9 @@
+package projetoremar
+
+class Professor extends Usuario {
+
+    static constraints = {
+    }
+
+    String nome
+}
