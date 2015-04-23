@@ -88,6 +88,15 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+        camunda {
+            engine {
+                configuration {
+                    history = 'full'
+                }
+            }
+        }
+        //grails.serverURL = "http://localhost:8080/"
+        //grails.app.context = "/"
     }
     production {
         grails.logging.jul.usebridge = false
@@ -122,6 +131,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'projetoremar.Usua
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'projetoremar.UsuarioPapel'
 grails.plugin.springsecurity.authority.className = 'projetoremar.Papel'
 grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/main/'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],

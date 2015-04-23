@@ -49,14 +49,17 @@ grails.project.dependency.resolution = {
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-        //runtime 'mysql:mysql-connector-java:5.1.34'
+        runtime 'mysql:mysql-connector-java:5.1.34'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
-        test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+//        test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+
+
     }
 
     plugins {
         // plugins for the build system only
         build ":tomcat:7.0.55"
+
 
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
@@ -64,6 +67,9 @@ grails.project.dependency.resolution = {
         compile ":asset-pipeline:1.9.9"
         compile ":spring-security-core:2.0-RC4"
         compile ":camunda:0.4.0"
+       // compile ":uploadr:latest.integration"
+        compile ":modaldynamix:0.12"
+        compile ":jquery-ui:1.10.3"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"

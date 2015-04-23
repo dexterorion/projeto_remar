@@ -1,0 +1,10 @@
+<plugin name='pluginbuddy' version='0.3' grailsVersion='2.0 &gt; *'>
+  <title>Pluginbuddy identifies resources/assets from enduser app version</title>
+  <description>Outputs resources or assets for you to decide on what to do within your plugin. Does the calculation for your plugin to output according to end users resources/assets based sites,</description>
+  <documentation>https://github.com/vahidhedayati/grails-pluginbuddy-plugin</documentation>
+  <type>PluginbuddyGrailsPlugin</type>
+  <resources>
+    <resource>grails.plugin.pluginbuddy.PluginbuddyService</resource>
+    <resource>grails.plugin.pluginbuddy.PluginBuddyTagLib</resource>
+  </resources>
+</plugin>

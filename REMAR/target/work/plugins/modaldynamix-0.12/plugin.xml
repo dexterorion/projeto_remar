@@ -1,0 +1,12 @@
+<plugin name='modaldynamix' version='0.12' grailsVersion='2.0 &gt; *'>
+  <author>Vahid Hedayati</author>
+  <authorEmail>badvad@gmail.com</authorEmail>
+  <title>ModalBox Dynamic Form Updater</title>
+  <description>Load various types of forms  Self Posting,I Frame, Remote Forms and normal calls via ModalBox, upon trigger save or close depending on type of call, the underlying form is updated with new values without page refreshes.</description>
+  <documentation>http://grails.org/plugin/modaldynamix</documentation>
+  <type>ModaldynamixGrailsPlugin</type>
+  <resources>
+    <resource>modaldynamix.ModaldynamixController</resource>
+    <resource>modaldynamix.ModalDynamixTagLib</resource>
+  </resources>
+</plugin>

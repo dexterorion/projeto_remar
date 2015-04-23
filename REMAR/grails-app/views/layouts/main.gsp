@@ -14,7 +14,12 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
+        <g:javascript library="application"/>
+        <g:javascript library="jquery"/>
+        <g:javascript library="jquery-ui"/>
+        <r:layoutResources />
 		<g:layoutHead/>
+
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
