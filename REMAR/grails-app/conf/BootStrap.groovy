@@ -3,10 +3,14 @@ import projetoremar.Usuario
 import projetoremar.Papel
 import projetoremar.UsuarioPapel
 import projetoremar.Professor
+import org.camunda.bpm.engine.IdentityService
+import org.camunda.bpm.engine.identity.User
 
 import javax.servlet.http.HttpServletRequest
 
 class BootStrap {
+
+    IdentityService identityService
 
     def init = { servletContext ->
 
@@ -30,6 +34,12 @@ class BootStrap {
         UsuarioPapel.create(admin, adminPapel, true)
 
         print 'populando usuário admin - ok'
+    
+        User camundaProf = identityService.newUser("prof")
+        camundaProf.setEmail("cleyton@prof.com")
+        camundaProf.setFirstName("Cleyton")
+        camundaProf.setPassword("prof")
+        identityService.saveUser(camundaProf)
 
         def profPapel = new Papel(authority: "ROLE_PROF").save flush: true
 
@@ -38,6 +48,7 @@ class BootStrap {
             username: "prof",
             password: "prof",
             email: "cleyton@prof.com",
+            camunda_id: camundaProf.getId(),
             enabled: true).save flush: true
 
         if(professor.hasErrors()){
@@ -80,7 +91,8 @@ class BootStrap {
 
         UsuarioPapel.create(desenvolvedor, desenvolvedorPapel, true)
 
-        print 'populando desenvolvedor - ok'*/
+        print 'populando desenvolvedor - ok'
+        */
         
         def springContext = WebApplicationContextUtils.getWebApplicationContext(servletContext)
         

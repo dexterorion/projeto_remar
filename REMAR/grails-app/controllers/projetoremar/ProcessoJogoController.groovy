@@ -9,6 +9,12 @@ import org.camunda.bpm.engine.*
 import org.camunda.bpm.engine.repository.ProcessDefinition
 import org.camunda.bpm.engine.repository.ProcessDefinitionQuery
 import org.camunda.bpm.engine.runtime.ProcessInstance
+import org.camunda.bpm.engine.task.Task
+import org.camunda.bpm.engine.task.TaskQuery
+import org.camunda.bpm.engine.identity.UserQuery
+import org.camunda.bpm.engine.identity.User
+import org.camunda.bpm.engine.runtime.ProcessInstanceQuery
+import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.springframework.security.access.annotation.Secured
 
 @Secured(['ROLE_PROF'])
@@ -19,6 +25,8 @@ class ProcessoJogoController {
     def springSecurityService
     RuntimeService runtimeService
     RepositoryService repositoryService
+    TaskService taskService
+    IdentityService identityService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -27,6 +35,25 @@ class ProcessoJogoController {
     }
 
     def show(ProcessoJogo processoJogoInstance) {
+        // listar todas as tarefas atuais iniciadas
+        List<Task> allTasksByProcessDefinition = query.processDefinitionId(processoJogoInstance.id_process_definition).list()
+
+        for(Task t : allTasksByProcessDefinition){
+            //taskService.complete(t.getId())
+            //taskService.setOwner(t.getId(), "viniciusnordi")
+        }
+
+        //ProcessInstanceQuery queryPI = runtimeService.createProcessInstanceQuery()
+        //print queryPI.list()
+        //UserQuery userQuery = identityService.createUserQuery()
+        //List<User> allUsers = userQuery.list()
+        //print allUsers
+
+        //TaskQuery query =  taskService.createTaskQuery()
+        
+
+        
+
         respond processoJogoInstance
     }
 
@@ -55,7 +82,7 @@ class ProcessoJogoController {
         }
         else{
             //redirect action: "tasks"
-            redirect action: "index"
+            redirect professorJogo
         }
 
     }
@@ -68,7 +95,7 @@ class ProcessoJogoController {
             return
         }
 
-        runtimeService.deleteProcessInstance(processoJogoInstance.id_process_instance, "Professor removendo jogo")
+//        runtimeService.deleteProcessInstance(processoJogoInstance.id_process_instance, "Professor removendo jogo")
 
         processoJogoInstance.delete flush:true
 

@@ -11,6 +11,7 @@ class Usuario {
 	boolean accountLocked
 	boolean passwordExpired
 	String email
+	String camunda_id
 
 	static transients = ['springSecurityService']
 
@@ -18,6 +19,7 @@ class Usuario {
 		username blank: false, unique: true
 		password blank: false
 		email blank:false, email:true
+		camunda_id nullable: true
 	}
 
 	static mapping = {
