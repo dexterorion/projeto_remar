@@ -18,13 +18,20 @@ class BootStrap {
             'XMLHttpRequest' == delegate.getHeader('X-Requested-With')
         }
 
-        /*def adminPapel = new Papel(authority: "ROLE_ADMIN").save flush: true
+        User camundaAdmin = identityService.newUser("admin")
+        camundaAdmin.setEmail("admin@admin.com")
+        camundaAdmin.setFirstName("Admin")
+        camundaAdmin.setPassword("admin")
+        identityService.saveUser(camundaAdmin)
+
+        def adminPapel = new Papel(authority: "ROLE_ADMIN").save flush: true
 
         def admin = new Usuario(
             username: "admin",
             password: "admin",
             email: "admin@admin.com",
             name: "Administrador",
+            camunda_id: camundaAdmin.getId(),
             enabled: true).save flush: true
 
         if(admin.hasErrors()){
@@ -92,7 +99,7 @@ class BootStrap {
         UsuarioPapel.create(desenvolvedor, desenvolvedorPapel, true)
 
         print 'populando desenvolvedor - ok'
-        */
+        
         
         def springContext = WebApplicationContextUtils.getWebApplicationContext(servletContext)
         
