@@ -8,7 +8,7 @@ import org.camunda.bpm.engine.repository.ProcessDefinitionQuery
 import org.springframework.security.access.annotation.Secured
 
 
-@Secured(['ROLE_PROF', 'ROLE_DESENVOLVEDOR'])
+@Secured(['ROLE_PROF', 'ROLE_DESENVOLVEDOR', 'ROLE_ADMIN'])
 class MainController {
 
 	def springSecurityService
